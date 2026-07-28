@@ -1,0 +1,14 @@
+# Q9
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+df = pd.read_excel("l2.xlsx", sheet_name="thyroid0387_UCI")
+
+numeric_cols = df.select_dtypes(include=["int64", "float64"]).columns
+
+scaler = MinMaxScaler()
+
+df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
+
+print(df.head())
